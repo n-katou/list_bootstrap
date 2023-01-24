@@ -29,6 +29,12 @@ public class TodoService {
         return updateTodo.get();
     }
 
+    public void deleteById(Integer id) {
+        todoRepository.deleteById(id);
+    }
+
+    
+
     public void deleteAllTodo() {
         List<Todo> allTodo = todoRepository.findAll();
         List<Todo> doneList = new ArrayList<>();

@@ -27,7 +27,7 @@
     </div>
   </div>
   <br><br><br>
-  
+
   <div class="flex">      
     <div class="incomplete">
       <h1>未完了</h1>
@@ -39,6 +39,8 @@
           </form>
           <p th:text="${todo.content}"></p><br>
           <p th:text="${todo.time}"></p>
+          <p><a th:href="@{/edit/{id}(id=${todo.id})}">編集</a></p>
+          <p><a th:href="@{/delete/{id}(id=${todo.id})}">削除</a></p>
         </div>
       </div>
     </div>

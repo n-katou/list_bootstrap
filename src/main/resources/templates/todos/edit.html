@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" th:href="@{css/home.css}">
+  <title>SpringTodoList</title>
+</head>
+<body>
+  <div class="form-area">
+    <div class="create-todo">
+        <form th:action="@{/update/{id}(id=${id})}" th:object="${todo}" method="post">
+            <div>
+                <p>やること</p><br>
+                <input type="text" th:field="*{content}">
+                <p th:errors="*{content}" class="todo-error-message"></p>
+            </div>
+            <div>
+                <p>日にち</p><br>
+                <input type="date" name="time" th:field="*{time}" />
+                <p th:errors="*{time}" class="todo-error-message"></p>
+            </div>
+            <div>
+            <br><br>
+            <button type="submit">登録</button>
+            </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
