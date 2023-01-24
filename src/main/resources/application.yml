@@ -6,11 +6,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/todo_db
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/list_db
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASS:19940119Nk}
     
-mybatis:
-  mapper-locations: classpath*:mybatis/*.xml
-  configuration:
-    map-underscore-to-camel-case: true
