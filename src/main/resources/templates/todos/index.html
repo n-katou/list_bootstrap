@@ -2,11 +2,66 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" th:href="@{css/home.css}">
   <title>SpringTodoList</title>
 </head>
 <body>
-  <div th:each="todo : ${allTodo}">
-    <p th:text="${todo.content}"></p>
+  <div class="form-area">
+    <div class="create-todo">
+      <form th:action="@{/create}" th:object="${todo}" method="post"  >
+        <div>
+          <p>やること</p><br>
+          <input type="text" th:field="*{content}">
+          <p th:errors="*{content}" class="todo-error-message"></p>
+        </div>
+        <div>
+          <p>日にち</p><br>
+          <input type="date" name="time" th:field="*{time}" />
+          <p th:errors="*{time}" class="todo-error-message"></p>
+        </div>
+        <div>
+          <br><br>
+          <button type="submit">登録</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br><br><br>
+  
+  <div class="flex">      
+    <div class="incomplete">
+      <h1>未完了</h1>
+      <div th:each="todo : ${allTodo}">
+        <div th:if="${!todo.done}">
+          <form method="POST" th:action="@{/done}">
+            <input type="hidden" name="id" th:value="${todo.id}" />
+            <button type="submit"></button>
+          </form>
+          <p th:text="${todo.content}"></p><br>
+          <p th:text="${todo.time}"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="complete">
+      <h1>完了済み</h1>
+      <div th:each="todo : ${allTodo}">
+        <div th:if="${todo.done}">
+          <form method="POST" th:action="@{/notdone}">
+            <input type="hidden" name="id" th:value="${todo.id}" />
+            <button type="submit"></button>
+          </form>
+          <p th:text="${todo.content}"></p><br>
+          <p th:text="${todo.time}"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="delete-all">
+    <form method="POST" th:action="@{/deleteAll}">
+      <button type="submit">完了済みを削除</button>
+    </form>
   </div>
 </body>
 
