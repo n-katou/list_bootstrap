@@ -2,29 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" type="text/css" th:href="@{css/home.css}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <title>SpringTodoList</title>
 </head>
 <body>
-  <div class="form-area">
-    <div class="create-todo">
-        <form th:action="@{/update/{id}(id=${id})}" th:object="${todo}" method="post">
-            <div>
-                <p>やること</p><br>
-                <input type="text" th:field="*{content}">
-                <p th:errors="*{content}" class="todo-error-message"></p>
-            </div>
-            <div>
-                <p>日にち</p><br>
-                <input type="date" name="time" th:field="*{time}" />
-                <p th:errors="*{time}" class="todo-error-message"></p>
-            </div>
-            <div>
-            <br><br>
-            <button type="submit">登録</button>
-            </div>
-      </form>
+  <h3>編集</h3>
+  <form th:action="@{/update/{id}(id=${id})}" th:object="${todo}" method="post">
+    <div>
+      <p>項目</p>
+      <input type="text" th:field="*{content}" placeholder="やること">
+      <p th:errors="*{content}" class="todo-error-message"></p>
     </div>
-  </div>
+    <br>
+
+    <div>
+      <p>日付け</p>
+      <input type="date" name="time" th:field="*{time}" />
+      <p th:errors="*{time}" class="todo-error-message"></p>
+    </div>
+    <br><br>
+    
+    <div>
+      <button type="submit" class="btn btn-primary">更新</button>
+    </div>
+  </form>
 </body>
 </html>
+
