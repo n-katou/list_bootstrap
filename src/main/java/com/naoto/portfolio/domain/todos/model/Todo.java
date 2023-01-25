@@ -34,5 +34,8 @@ public class Todo {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate time;
+
+    private String memo;
+    
     
 }

@@ -26,6 +26,12 @@ public class TodoController {
         return "todos/index";
     }
 
+    @GetMapping("/show/{id}")
+    public String show(@PathVariable Integer id, Model model) {
+        model.addAttribute("todo", todoService.findById(id));
+        return "todos/show";
+    }
+
     @PostMapping("/create")
     public String createTodo(@Validated @ModelAttribute Todo todo, BindingResult bindingResult,Model model ) {
 
@@ -80,6 +86,5 @@ public class TodoController {
         todoService.deleteAllTodo();
         return "redirect:/todos";
     }
-
 
 }

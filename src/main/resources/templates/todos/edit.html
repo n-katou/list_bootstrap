@@ -9,21 +9,26 @@
   <h3>編集</h3>
   <form th:action="@{/update/{id}(id=${id})}" th:object="${todo}" method="post">
     <div>
-      <p>項目</p>
-      <input type="text" th:field="*{content}" placeholder="やること">
+      <h6>項目</h6>
+      <input type="text" th:field="*{content}" placeholder="やること" size="40">
       <p th:errors="*{content}" class="todo-error-message"></p>
     </div>
     <br>
 
+    <h6>メモ</h6>
+      <input type="text" th:field="*{memo}" placeholder="空欄可能" size="60" />
+    </div>
+    <br><br>
+
     <div>
-      <p>日付け</p>
-      <input type="date" name="time" th:field="*{time}" />
+      <h6>日付け</h6>
+      <input type="date" name="time" th:field="*{time}"  size="30"/>
       <p th:errors="*{time}" class="todo-error-message"></p>
     </div>
     <br><br>
     
     <div>
-      <button type="submit" class="btn btn-primary">更新</button>
+      <button type="submit" class="btn btn-primary">登録</button>
     </div>
   </form>
 </body>
