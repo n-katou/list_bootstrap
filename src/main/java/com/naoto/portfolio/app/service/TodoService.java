@@ -34,7 +34,6 @@ public class TodoService {
     }
 
     
-
     public void deleteAllTodo() {
         List<Todo> allTodo = todoRepository.findAll();
         List<Todo> doneList = new ArrayList<>();
@@ -46,4 +45,5 @@ public class TodoService {
         }
         todoRepository.deleteAll(doneList);
     }
+
 }
