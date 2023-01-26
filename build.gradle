@@ -19,8 +19,14 @@ repositories {
 }
 
 dependencies {
+
+   	// implementation("org.springframework.session:spring-session-core")
+    // implementation("org.springframework.session:spring-session-jdbc")
+	// compileOnly "org.springframework.boot:spring-boot-starter-security"
+ 
 	implementation 'org.webjars:jquery:3.5.0'
     implementation 'org.webjars:bootstrap:5.2.2'
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation group: 'javax.persistence', name: 'javax.persistence-api'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
