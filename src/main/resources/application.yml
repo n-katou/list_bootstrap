@@ -9,4 +9,12 @@ spring:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/list_db
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASS:19940119Nk}
-    
+  
+  sql:
+    init:
+      mode: always 
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:schema.sql
+      encoding: utf-8
+      
+ 

@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.1'
+	id 'org.springframework.boot' version '2.7.6'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
@@ -21,25 +21,23 @@ repositories {
 dependencies {
 
 
-   	// implementation("org.springframework.session:spring-session-core")
-    // implementation("org.springframework.session:spring-session-jdbc")
-	// compileOnly "org.springframework.boot:spring-boot-starter-security"
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.6'
  
 	implementation 'org.webjars:jquery:3.5.0'
     implementation 'org.webjars:bootstrap:5.2.2'
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.6'
 	implementation group: 'javax.persistence', name: 'javax.persistence-api'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.6'
 	implementation 'mysql:mysql-connector-java:8.0.31'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.7.1' // 2.7.1を指定
-	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.1' // 2.7.1を指定
-	compileOnly 'org.projectlombok:lombok:1.18.24' // 1.18.24を指定
-	developmentOnly 'org.springframework.boot:spring-boot-devtools:2.7.1' // 2.7.1を指定
-	runtimeOnly 'com.h2database:h2:2.1.214' // 2.1.214を指定
-	annotationProcessor 'org.projectlombok:lombok:1.18.24' // 1.18.24を指定
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.1'  // 2.7.1を指定
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.6'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.7.6' 
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.6' 
+	compileOnly 'org.projectlombok:lombok:1.18.24' 
+	developmentOnly 'org.springframework.boot:spring-boot-devtools:2.7.6' 
+	runtimeOnly 'mysql:mysql-connector-java' 
+	annotationProcessor 'org.projectlombok:lombok:1.18.24' 
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.6' 
 }
 
 
