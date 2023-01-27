@@ -1,6 +1,4 @@
-package com.naoto.portfolio.app.controller;
-
-
+package com.naoto.portfolio;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,47 +14,50 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.naoto.portfolio.app.service.UserDetailsServiceImpl;
 import com.naoto.portfolio.domain.todos.model.SignupForm;
 
 
+
 @Controller
-public class UserController {
-    
+public class TestController {
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
 
-    
-    @GetMapping("/user/login")
+    @GetMapping
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/login")
     public String login() {
-        return "users/login";
+        return "login";
     }
 
-    @GetMapping("/user/new")
+    @GetMapping("/signup")
     public String newSignup(SignupForm signupForm) {
-        return "users/newUser";
+        return "signup";
     }
 
-    @PostMapping("/user/new")
-    public String signup(@Validated SignupForm signupForm,BindingResult result ,Model model,HttpServletRequest request) {
-
-        if(result.hasErrors()) {
-            return "users/newUser";
+    @PostMapping("/signup")
+    public String signup(@Validated SignupForm signupForm, BindingResult result, Model model,
+            HttpServletRequest request) {
+        if (result.hasErrors()) {
+            return "signup";
         }
 
         if (userDetailsServiceImpl.isExistUser(signupForm.getUsername())) {
             model.addAttribute("signupError", "ユーザー名 " + signupForm.getUsername() + "は既に登録されています");
-            return "/users/newUser";
+            return "signup";
         }
 
         try {
             userDetailsServiceImpl.register(signupForm.getUsername(), signupForm.getPassword(), "ROLE_USER");
         } catch (DataAccessException e) {
             model.addAttribute("signupError", "ユーザー登録に失敗しました");
-            return "/users/newUser";
+            return "signup";
         }
 
         SecurityContext context = SecurityContextHolder.getContext();
@@ -71,7 +72,7 @@ public class UserController {
         } catch (ServletException e) {
             e.printStackTrace();
         }
-        return "redirect:/todos";
-    }
 
+        return "redirect:/";
+    }
 }
